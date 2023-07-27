@@ -49,7 +49,7 @@
     echo $ss->possibility($employee6, $car2, $employees) . "<br />";
     echo $employee6->carry_diagnostic($car2) . "<br/>";
     echo $employee6->repair($car2) . "<br/>";
-    echo $car2->current_breakdown . "<br/>";
+    echo $car2->getCurrentBreakdown() . "<br/>";
 
     ?>
 </body>
