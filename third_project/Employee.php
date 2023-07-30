@@ -5,6 +5,7 @@ class Employee {
     public $free;
     public $which_cars_repairs;
     public $current_mission;
+    public $balance;
 
     public function __construct($properties){
         $this->price_of_hour = $properties["price_of_hour"];
@@ -12,26 +13,20 @@ class Employee {
         $this->which_cars_repairs = $properties["which_cars_repairs"];
     }
     public function carry_diagnostic($broken_car) {
-        if($this->free) {
-            if(empty($this->current_mission)) {
-                return "No mission";
-            }
-            return get_object_vars($broken_car)["current_breakdown"];
+        if(empty($this->current_mission)) {
+            return "No mission";
         }
-        return "I'm bussy";
+        return $broken_car->current_breakdown;
     }
     public function repair($broken_car) {
-        if($this->free) {
-            if(!empty($this->current_mission)) {
-                if(get_object_vars($broken_car)["current_breakdown"] == "everything is broken") {
-                    return "Pinda rulu. Sorry, we can't help You. Drive on to SS";
-                } else {
-                    $broken_car->current_breakdown = "it's OK";
-                    return "We have successfully repaired your car! Be more careful in the future :)";
-                }
+        if(!empty($this->current_mission)) {
+            if($broken_car->current_breakdown == "everything is broken") {
+                return "Pinda rulu. Sorry, we can't help You. Drive on to SS";
+            } else {
+                $broken_car->current_breakdown = "it's OK";
+                return "We have successfully repaired your car! Be more careful in the future :)";
             }
-            return "I have not a mission";
         }
-        return "WTF? Check, I'm free or not...";
+        return "I have not a mission";
     }
 }

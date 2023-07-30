@@ -25,9 +25,9 @@
 
     $employee1 = new Employee(["price_of_hour" => 18, "free" => true, "which_cars_repairs" => ["Universal"]]);
     array_push($employees, $employee1);
-    $employee2 = new Employee(["price_of_hour" => 18, "free" => true, "which_cars_repairs" => ["Universal"]]);
+    $employee2 = new Employee(["price_of_hour" => 18, "free" => false, "which_cars_repairs" => ["Universal"]]);
     array_push($employees, $employee2);
-    $employee3 = new Employee(["price_of_hour" => 15, "free" => false, "which_cars_repairs" => ["output_year" => range(2006, 2023)]]);
+    $employee3 = new Employee(["price_of_hour" => 15, "free" => true, "which_cars_repairs" => ["output_year" => range(2006, 2023)]]);
     array_push($employees, $employee3);
     $employee4 = new Employee(["price_of_hour" => 20, "free" => false, "which_cars_repairs" => ["place_of_production" => "German"]]);
     array_push($employees, $employee4);
@@ -43,12 +43,16 @@
     echo $ss->possibility($employee1, $car1, $employees) . "<br/>";
     echo $employee1->carry_diagnostic($car1) . "<br/>";
     echo $employee1->repair($car1) . "<br/>";
-    echo $ss->possibility($employee2, $car1, $employees) . "<br/>";
     echo $ss->possibility($employee7, $car1, $employees) . "<br/>";
 
     echo $ss->possibility($employee6, $car2, $employees) . "<br />";
     echo $employee6->carry_diagnostic($car2) . "<br/>";
     echo $employee6->repair($car2) . "<br/>";
+    echo $car2->getCurrentBreakdown() . "<br/><br/>";
+
+    echo $ss->possibility($employee3, $car2, $employees) . "<br />";
+    echo $employee3->carry_diagnostic($car2) . "<br/>";
+    echo $employee3->repair($car2) . "<br/>";
     echo $car2->getCurrentBreakdown() . "<br/>";
 
     ?>
