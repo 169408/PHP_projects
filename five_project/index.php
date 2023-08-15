@@ -25,10 +25,11 @@ require_once "page_control.php";
         foreach ($players as $player) {
         ?>
             <tr>
-                <td class="primary_key"><?= $player[0]?></td>
+                <td class="primary_key"><a href="update_for_players.php?id=<?php echo $player[0]?>"><?= $player[0]?></a></td>
                 <td><?= $player[1]?></td>
                 <td><?= $player[2]?></td>
                 <td><?= $player[3]?></td>
+                <td class="delete"><a href="vendor/delete_for_players.php?id=<?php echo $player[0]?>"><img src="icons/icons8-крестик-48.png" alt="1"></a></td>
             </tr>
         <?php
             }
@@ -55,9 +56,10 @@ require_once "page_control.php";
         foreach ($locations as $location) {
             ?>
             <tr>
-                <td class="primary_key"><?= $location[0]?></td>
+                <td class="primary_key"><a href="update_for_locations.php?id=<?php echo $location[0]?>"><?= $location[0]?></a></td>
                 <td><?= $location[1]?></td>
                 <td><?= $location[2]?></td>
+                <td class="delete"><a href="vendor/delete_for_locations.php?id=<?php echo $location[0]?>"><img src="icons/icons8-крестик-48.png" alt="1"></a></td>
             </tr>
             <?php
         }

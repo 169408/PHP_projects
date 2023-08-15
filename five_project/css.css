@@ -15,8 +15,17 @@ td {
     font-size: 23px;
 }
 
-.primary_key {
+table .primary_key {
     background: gold;
+}
+
+table .delete {
+    background: #ff7777;
+}
+
+table img {
+    height: 30px;
+    width: 30px;
 }
 
 form {
@@ -43,3 +52,4 @@ form button {
     margin: 10px;
     padding: 10px;
 }
+
