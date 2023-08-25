@@ -36,6 +36,7 @@
         <td><?=$class->first_name?></td>
         <td><?=$class->last_name?></td>
         <td><?=$class->number?></td>
+        <td><a href="update.php?id=<?= $class->class_id?>">Update</a></td>
     </tr>
     <?php
     }

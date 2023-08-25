@@ -43,6 +43,7 @@ $childs = $schoolchilds->readAll();
             <td><?=$child->surname?></td>
             <td><?=$child->city?></td>
             <td><?=$child->class_id?></td>
+            <td><a href="update.php?id=<?=$child->schoolchild_id?>">Update</a></td>
         </tr>
         <?php
     }

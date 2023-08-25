@@ -49,6 +49,7 @@ if(!empty($records)) {
             <td><?=$record->surname?></td>
             <td><?=$record->city?></td>
             <td><?=$record->class_id?></td>
+            <td><a href="update.php?id=<?=$record->schoolchild_id?>">Update</a></td>
         </tr>
         <?php
         }

@@ -23,7 +23,7 @@ if(isset($_POST["submit"])) {
 <head>
     <link rel="stylesheet" href="../../assets/css.css" type="text/css">
     <meta charset="UTF-8">
-    <title>Create new schoolchild</title>
+    <title>Create new class</title>
 </head>
 <body>
 <form action="" method="post">

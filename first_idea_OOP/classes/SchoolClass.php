@@ -48,6 +48,34 @@ class SchoolClass {
         $record = mysqli_fetch_assoc($record);
         return $record;
     }
+
+    public function readByNumber($number) {
+        $records = mysqli_query($this->connection, "SELECT * FROM schoolclasses WHERE number = $number");
+        if(empty($records)) {
+            return;
+        }
+        if($records->num_rows == 0) {
+            return;
+        }
+        return $records;
+    }
+
+    public function readByChildsId($id) {
+        $child = new SchoolChild($this->connection);
+        $record = $child->readById($id);
+        $class_id = $record["class_id"];
+        $class = mysqli_query($this->connection, "SELECT * FROM schoolclasses WHERE class_id = $class_id");
+        $class = mysqli_fetch_assoc($class);
+        return $class;
+    }
+
+    public function update($properties) {
+        $this->class_id = $properties["class_id"];;
+        $this->first_name = $properties["first_name"];
+        $this->last_name = $properties["last_name"];
+        $this->number = $properties["number"];
+        $this->save();
+    }
 }
 
 ?>

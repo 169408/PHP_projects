@@ -7,15 +7,14 @@ require_once "../../classes/SchoolChild.php";
 $dbConnection = DatabaseConnection::getInstance();
 $connect = $dbConnection->getConnection();
 
-$schoolchilds = new SchoolChild($connect);
+$schoolclass = new SchoolClass($connect);
 
 if(isset($_POST["id"])) {
     $id = $_POST["id"];
-    $name = $_POST["name"];
-    $surname = $_POST["surname"];
-    $city = $_POST["city"];
-    $class_id = $_POST["class_id"];
-    $schoolchilds->update(["schoolchild_id" => $id, "name" => $name, "surname" => $surname, "city" => $city, "class_id" => $class_id]);
+    $first_name = $_POST["first_name"];
+    $last_name = $_POST["last_name"];
+    $number = $_POST["number"];
+    $schoolclass->update(["class_id" => $id, "first_name" => $first_name, "last_name" => $last_name, "number" => $number]);
 }
 ?>
 
@@ -24,20 +23,18 @@ if(isset($_POST["id"])) {
 <head>
     <link rel="stylesheet" href="../../assets/css.css" type="text/css">
     <meta charset="UTF-8">
-    <title>Update schoolchild</title>
+    <title>Update class</title>
 </head>
 <body>
 <form action="" method="post">
     <p>Id, Whose record u want to overwrite</p>
     <input type="text" name="id" placeholder="id" <?php if(isset($_GET["id"])) {?> value="<?=$_GET["id"]?> <?php }?>"/>
-    <p>Name</p>
-    <input type="text" name="name" placeholder="name" />
-    <p>Surname</p>
-    <input type="text" name="surname" placeholder="surname" />
-    <p>City</p>
-    <input type="text" name="city" placeholder="city" />
-    <p>Class id</p>
-    <input type="text" name="class_id" placeholder="class id" />
+    <p>First name</p>
+    <input type="text" name="first_name" placeholder="first name" />
+    <p>Last name</p>
+    <input type="text" name="last_name" placeholder="last name" />
+    <p>Number of schoolchilds</p>
+    <input type="text" name="number" placeholder="number" />
     <button type="submit">Submit</button>
 </form>
 </body>
