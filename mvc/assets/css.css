@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    border: 3px solid #c1c1c1;
+    display: inline-block;
+    margin: 10px 0 30px;
+    padding: 24px 49px;
+}
+
+table {
+    background: deepskyblue;
+}
+
+table tr td {
+    padding: 10px;
+    text-align: center;
+}
+
+table tr .primary_key {
+    background: gold;
+}
+
+table tr .done {
+    background: springgreen;
+}
+
+table tr .execute {
+    background: moccasin;
+}
+
+table tr .execute a {
+    color: deepskyblue;
+}
+
+table tr .delete {
+    background: azure;
+}
+
+table tr .delete a {
+    color: orangered;
+}
