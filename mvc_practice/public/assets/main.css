@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    height: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+nav {
+    background: #333333;
+    padding: 20px;
+}
+
+nav ul {
+    display: block;
+    position: relative;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 17px 26px;
+}
+
+nav ul li a {
+    color: honeydew;
+    font-size: 21px;
+}
+
+nav ul li a.active {
+    color: gray;
+}
+
+main.contant {
+    min-height: 85vh;
+}
+
+.footer div {
+    background: #333333;
+    color: honeydew;
+    padding: 30px;
+    text-align: center;
+}
