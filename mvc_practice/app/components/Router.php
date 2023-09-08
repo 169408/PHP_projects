@@ -5,7 +5,7 @@ class Router
     private $routes;
 
     public function __construct() {
-        $routesPath = ROOT.'/app/config/routes.php';
+        $routesPath = ROOT.'/config/routes.php';
         $this->routes = include($routesPath);
     }
 
@@ -15,18 +15,35 @@ class Router
         }
     }
 
-    public function run() {
+    public function run($connect) {
         // Отримати рядок запиту
         $uri = $this->getURI();
 
         // Перевірити наявність такого запиту у routes.php
         foreach ($this->routes as $uriPattern => $path) {
-
+            $segments_uri = explode('/', $uri);
+            $count_segment = 0;
+            for($i = 0; $i < count($segments_uri); $i++) {
+                if($segments_uri[$i] == $uriPattern) {
+                    $count_segment = $i;
+                }
+            }
             // Порівнюємо $uriPattern і $uri
             if(preg_match("~$uriPattern~", $uri)) {
-
+                foreach ($path as $value) {
+                    if(preg_match("~$value~", "$uri")) {
+                        $road = $value;
+                        break;
+                    }
+                }
+                if($count_segment == count($segments_uri)-1) {
+                    $road = $path[0];
+                }
+                if(!isset($road)) {
+                    abort(404);
+                }
                 // Якщо є збіг, то визначити який контроллер і action о опрацьовує запит
-                $segments = explode('/', $path);
+                $segments = explode('/', $road);
 
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
@@ -42,7 +59,7 @@ class Router
 
                 // Створити об'єкт, викликати метод (тобто action)
 
-                $controllerObject = new $controllerName;
+                $controllerObject = new $controllerName($connect);
                 $result = $controllerObject->$actionName();
                 if($result != null) {
                     break;
