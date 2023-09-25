@@ -17,7 +17,7 @@ class Router
 
     public function run($connect) {
         // Отримати рядок запиту
-        $uri = $this->getURI();
+        $uri = $this->getURI();;
 
         // Перевірити наявність такого запиту у routes.php
         foreach ($this->routes as $uriPattern => $path) {
@@ -31,8 +31,10 @@ class Router
             // Порівнюємо $uriPattern і $uri
             if(preg_match("~$uriPattern~", $uri)) {
                 foreach ($path as $value) {
-                    if(preg_match("~$value~", "$uri")) {
-                        $road = $value;
+                    if(preg_match("~/$value~", "$uri")) {
+                        if(stristr($uri, "/$value") == "/$value") {
+                            $road = $value;
+                        }
                         break;
                     }
                 }
@@ -60,13 +62,21 @@ class Router
                 // Створити об'єкт, викликати метод (тобто action)
 
                 $controllerObject = new $controllerName($connect);
-                $result = $controllerObject->$actionName();
+                if($segments != null) {
+                    $parameter = array_shift($segments);
+                    $result = $controllerObject->$actionName($parameter);
+                } else {
+                    $result = $controllerObject->$actionName();
+                }
                 if($result != null) {
                     break;
                 }
 
 
             }
+        }
+        if(!isset($result)) {
+            require_once PUB . "/homepage.php";
         }
     }
 }

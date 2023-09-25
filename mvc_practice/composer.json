@@ -1,0 +1,20 @@
+{
+  "name": "vendor_name/mvc_practice",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Lenovo",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+        "myfrm\\": "vendor/myfrm/core/classes"
+    }
+  },
+  "require": {
+
+  }
+}

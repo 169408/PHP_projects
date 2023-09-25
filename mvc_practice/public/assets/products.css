@@ -1,0 +1,13 @@
+table {
+    background: darkcyan;
+}
+
+table tr td {
+    color: white;
+}
+
+.not_found img {
+    height: 300px;
+    margin: 10px 7px;
+    width: 270px;
+}
